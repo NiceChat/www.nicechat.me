@@ -1,28 +1,9 @@
-# saas-web
+## [nicecaht.me](www.nicechat.me)
 
-> This is a PC webpage of SassFiance
+> 这是一个个人笔记记录的项目的前端部分
 
 ## Build Setup
 
 ``` bash
-# install dependencies
-npm install
-Deploy Java&gradle environment
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-gradle deploy -Pargs=dev1
-
-# build for production and view the bundle analyzer report
-npm run build --report
+  npm install
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-
-## 使用插件列表
- - vue-lazyloadimg  图片懒加载
- - template1 height 70px 
