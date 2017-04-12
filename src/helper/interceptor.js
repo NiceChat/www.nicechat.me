@@ -12,23 +12,9 @@ export const Interceptor = () => {
       // 本地开发环境
       request.url = Config.devHostName + request.url
     } else {
-      let hostname = window.location.hostname
-      if (hostname.indexOf('devel.saas.fincgo') !== -1) {
-        // 线上预览模式
-        console.log('预览模式')
-      } else {
-        // 线上真实环境
-        console.log('线上环境')
-      }
-      request.url = 'http://' + hostname + request.url
+      // 本地开发环境
+      request.url = Config.proHostName + request.url
     }
-
-    let custmorsecret = localStorage.getItem('custmorsecret')
-    let usersecret = localStorage.getItem('usersecret')
-    let usertype = localStorage.getItem('usertype')
-    custmorsecret && (request.body.custmorsecret = custmorsecret)
-    usersecret && (request.body.usersecret = usersecret)
-    usertype && (request.body.usertype = usertype)
 
     if (frozenUrl[ request.url ]) return false
     frozenUrl[ request.url ] = true

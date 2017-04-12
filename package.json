@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src"
+    "lint": "eslint --ext .js,.vue src",
+    "publish": "sh tool/publish.sh"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
