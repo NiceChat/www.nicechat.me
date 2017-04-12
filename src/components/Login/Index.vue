@@ -1,6 +1,6 @@
 <template>
   <div class="page--loginpage">
-    This is a login page.
+    <canvas id="canvas"></canvas>
   </div>
 </template>
 
@@ -13,6 +13,18 @@
       return {
       }
     },
+    mounted () {
+      var WIDTH = window.innerWidth
+      var HEIGHT = window.innerHeight
+      var POINT = 35
+
+      var canvas = document.getElementById('canvas')
+      canvas.width = WIDTH
+      canvas.height = HEIGHT
+
+      var context= canvas.getContext('2d')
+
+    },
     methods: {
     },
     components: {
@@ -20,3 +32,12 @@
     }
   }
 </script>
+
+<style lang="scss" rel="stylesheet/scss">
+  .page--loginpage {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: darkred;
+  }
+</style>
