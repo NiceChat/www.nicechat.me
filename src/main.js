@@ -6,15 +6,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import VueSweetAlert from 'vue-sweetalert'
 import vueResource from 'vue-resource'
 import { Interceptor } from 'helper/interceptor'
 // import 'helper/prism'
 import 'helper/filters'
 import 'style/index'
 // import 'highlight.js/styles/default.css'
-import 'sweetalert2/dist/sweetalert2.min.css'
 // Vue.use(moment)
 Vue.use(vueResource)
+Vue.use(VueSweetAlert)
 Interceptor()
 /* eslint-disable no-new */
 new Vue({

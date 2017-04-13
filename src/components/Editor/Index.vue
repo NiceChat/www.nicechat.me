@@ -24,7 +24,6 @@
 <script>
   import MenuBar from 'components/Common/Menu'
   import VueMarkdown from 'vue-markdown'
-  import swal from 'sweetalert2'
 
   export default {
     data () {
@@ -60,7 +59,7 @@
         // console.log('保存操作')
         let id = this.$route.query.id
         if( this.source == '' || this.title == '' ){
-          swal({
+          this.$swal({
             title: '字段为空！',
             text: '有字段未填写，填写完整后在提交保存。',
             type: 'error'
@@ -83,7 +82,7 @@
         this.$http.post('/api/updateSingleBlog', data).then((response) => {
           let res = response.body
           if (res.code === 0) {
-            swal({
+            this.$swal({
               title: '更新成功！',
               text: '如果是直接从页面改的话，找个时间也把Mweb里面也同步更新下。',
               type: 'success'
@@ -108,7 +107,7 @@
         this.$http.post('/api/insertSingleBlog', data).then((response) => {
           let res = response.body
           if( res.code === 0 ) {
-            swal({
+            this.$swal({
               title: '新增成功！',
               text: '如果是直接从页面新增话，找个时间也把Mweb里面也同步新增下。',
               type: 'success'

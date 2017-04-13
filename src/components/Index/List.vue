@@ -80,6 +80,7 @@
        bottom: 0;
        left: 0;
        height: 60px;
+       pointer-events: none;
        background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(23, 85, 142, 0.1));
      }
 

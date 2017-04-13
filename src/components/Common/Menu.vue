@@ -3,10 +3,15 @@
     <div class="menu">
       <div class="menu--content">
         <router-link tag='div' class='logo' :to="{path: 'home'}">YangLeiLei`s Notes</router-link>
-        <router-link tag='div' class='edit' :to="{path: 'editor'}"><button class="btn">新增</button></router-link>
-        <div class="edit" v-if="editPage"><button class="btn" @click="saveBlog">保存</button></div>
-        <div class="edit" v-if="infoPage"><button class="btn" @click="editBlog">编辑</button></div>
-        <div class="edit" v-if="infoPage"><button class="btn" @click="delBlog">删除</button></div>
+        <template v-if="isLogin">
+          <router-link tag='div' class='edit' :to="{path: 'editor'}"><button class="btn">新增</button></router-link>
+          <div class="edit" v-if="editPage"><button class="btn" @click="saveBlog">保存</button></div>
+          <div class="edit" v-if="infoPage"><button class="btn" @click="editBlog">编辑</button></div>
+          <div class="edit" v-if="infoPage"><button class="btn" @click="delBlog">删除</button></div>
+        </template>
+        <template v-else>
+          <div class="edit" ><button class="btn" @click="toLogin">登&nbsp;&nbsp;录</button></div>
+        </template>
       </div>
     </div>
   </headroom>
@@ -21,6 +26,7 @@
       let fullpath = this.$route.fullPath
       let isInfoPage = false
       let isEditPage = false
+      let isLogin = localStorage.TOKEN == 'SUCCESS' ? true : false
       if (fullpath.indexOf('info') !== -1){
         isInfoPage = true
       } else if (fullpath.indexOf('edit') !== -1) {
@@ -28,7 +34,8 @@
       }
       return {
         infoPage: isInfoPage,
-        editPage: isEditPage
+        editPage: isEditPage,
+        isLogin
       }
     },
     methods: {
@@ -43,6 +50,10 @@
       // 删除操作
       delBlog () {
         this.$emit('delete')
+      },
+      // 管理员登录
+      toLogin () {
+        this.$router.push('login')
       }
     },
     components: {

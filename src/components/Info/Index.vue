@@ -17,7 +17,6 @@
 <script>
   import MenuBar from 'components/Common/Menu'
   import VueMarkdown from 'vue-markdown'
-  import swal from 'sweetalert2'
 
   export default {
     name: 'Info',
@@ -56,7 +55,7 @@
       deleteBolg () {
         let _this = this
         let id = this.$route.query.id
-        swal({
+        this.$swal({
           title: '确认删除吗?',
           text: '保证自己mac上Mweb里面最好有备份，不然就不要删了!',
           type: 'warning',
@@ -69,7 +68,7 @@
           _this.$http.post('/api/delsingleBlog', {id: id}).then((response) => {
             let res = response.body
             if (res.code === 0) {
-              swal({
+              _this.$swal({
                 title: '删除成功！',
                 text: '已经成功删除了，后悔了看下Mweb里面是否有备份。',
                 type: 'success'
