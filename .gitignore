@@ -2,7 +2,9 @@
 node_modules/
 .idea/
 .DS_Store
-dist/
 .babelrc
 .eslintignore.js
 .eslintrc.js
+dist/
+dist/index.html
+dist/static
