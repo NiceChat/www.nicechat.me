@@ -12,7 +12,7 @@ export const Interceptor = () => {
       // 本地开发环境
       request.url = Config.devHostName + request.url
     } else {
-      // 本地开发环境
+      // 线上环境地址
       request.url = Config.proHostName + request.url
     }
 

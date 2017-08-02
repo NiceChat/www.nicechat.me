@@ -1,6 +1,5 @@
 /**
- * saas-web 配置文件
- * test环境和dev环境基本相同唯一区别在与访问接口路径不一致
+ * 配置文件
  */
 export default {
   // app名字

@@ -14,32 +14,57 @@
         </router-link>
       </template>
     </div>
+    <infinite-loading :on-infinite="getBlogsList" ref="infiniteLoading">
+       <span slot="no-more">
+         LeiLei, Havas finis ŝarĝo :(
+       </span>
+    </infinite-loading>
   </div>
 </template>
 
 <script>
   import VueMarkdown from 'vue-markdown'
+  import InfiniteLoading from 'vue-infinite-loading'
   export default {
     data () {
       return {
-        list: []
+        list: [],
+        loading: false,
+        isLast: false,
+        pager: {
+          page: 1,
+          offset: 5
+        }
       }
     },
-    mounted () {
+    created () {
       this.getBlogsList()
     },
     methods: {
       getBlogsList () {
-        this.$http.post('/api/getBlogList', {offset: 10, page: 1}).then(response => {
-          let res = response.body
-          this.list = res.list
+        this.loading = true
+        const {offset, page} = this.pager
+        this.$http.post('/api/getBlogList', {offset, page}).then(response => {
+          this.pager.page++
+          this.loading = false
+          let {list, code} = response.body
+          if (Number(code) === 0) {
+            this.list = this.list.concat(list)
+            this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
+            if (list.length < this.pager.offset) {
+              this.isLast = true
+              this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete')
+            }
+          }
+
         }, response => {
           // error callback
         })
       }
     },
     components: {
-      VueMarkdown
+      VueMarkdown,
+      InfiniteLoading
     }
   }
 </script>
@@ -48,7 +73,7 @@
   @import '../../style/var';
   .list {
     width: $listWidth;
-    min-height: 800px;
+    height: auto;
     padding-top: 10px;
     margin: 0 auto;
 
