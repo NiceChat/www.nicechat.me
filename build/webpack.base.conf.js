@@ -7,10 +7,17 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
+var lang = require('highlight.js-async-webpack/src/file.lang.hljs.js');
+var _entry= {
+  app: './src/main.js'
+}
+for (var i = 0; i < lang.length; i++) {
+  console.log(lang[i])
+  _entry[lang[i]] = ['mavon-editor/dist/js/' + lang[i] + '.js']
+}
+
 module.exports = {
-  entry: {
-    app: './src/main.js'
-  },
+  entry: _entry,
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',

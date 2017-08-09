@@ -1,5 +1,12 @@
-@import "./common";
-@import "./prism";
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+::-webkit-input-placeholder {
+  color:#ccc;
+}
+
 button,input {
   outline: none;
 }

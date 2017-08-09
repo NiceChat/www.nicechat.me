@@ -12,13 +12,13 @@ import { Interceptor } from 'helper/interceptor'
 // import 'helper/prism'
 import 'helper/filters'
 import 'style/index'
-// import 'highlight.js/styles/default.css'
+import 'mavon-editor/dist/css/index.css'
 // Vue.use(moment)
 Vue.use(vueResource)
 Vue.use(VueSweetAlert)
 Interceptor()
 /* eslint-disable no-new */
-new Vue({
+var $vm = new Vue({
   router,
   store,
   ...App

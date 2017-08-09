@@ -9,7 +9,7 @@
             <span>作者：{{ item.author }}</span>
           </p>
           <div class="description">
-            <VueMarkdown :source="item.content"></VueMarkdown>
+            <div v-html="item.html" class="markdown-body code-github"></div>
           </div>
         </router-link>
       </template>

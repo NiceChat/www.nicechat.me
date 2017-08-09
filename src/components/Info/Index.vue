@@ -7,8 +7,7 @@
         <span>创建: <b>{{ info.ctime | calendar }}</b></span><span v-if="info.mtime">更新:<b>{{ info.mtime | calendar}}</b></span>By:{{ info.author }}
       </p>
       <div class="description">
-        <VueMarkdown :source="info.content" :show="show" :html="html" :breaks="breaks" :linkify="linkify"
-                     :emoji="emoji" :typographer="typographer" :toc="toc"></VueMarkdown>
+        <div v-html="info.html" class="markdown-body code-github"></div>
       </div>
     </div>
   </div>
@@ -22,15 +21,7 @@
     name: 'Info',
     data () {
       return {
-        info: {},
-        source: '',
-        show: true,
-        html: true,
-        breaks: true,
-        linkify: false,
-        emoji: true,
-        typographer: true,
-        toc: false
+        info: {}
       }
     },
     created () {
@@ -87,7 +78,7 @@
   }
 </script>
 
-<style lang="scss" rel="stylesheet/scss" scoped>
+<style lang="scss" rel="stylesheet/scss">
   @import '../../style/var';
   .info {
     width: $width;
@@ -99,8 +90,8 @@
     padding: 1px 30px 30px;
 
     .title {
-       font-size: 38px;
-       color: #666;
+       font-size: 28px;
+       color: #555;
        line-height: 2;
        text-align: center;
        letter-spacing: 1px;
@@ -118,9 +109,9 @@
     }
 
     .base {
-      font-size: 14px;
+      font-size: 12px;
       color: #999;
-      margin-top: -20px;
+      margin-top: -10px;
       text-align: center;
       span {
         margin-right:10px;

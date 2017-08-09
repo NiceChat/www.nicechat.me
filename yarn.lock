@@ -2355,7 +2355,11 @@ he@1.1.x, he@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
-highlight.js@^9.12.0, highlight.js@^9.9.0:
+highlight.js-async-webpack@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/highlight.js-async-webpack/-/highlight.js-async-webpack-1.0.4.tgz#c06b67bf99f049045d62b756e5855b0912ec616c"
+
+highlight.js@^9.11.0, highlight.js@^9.12.0, highlight.js@^9.9.0:
   version "9.12.0"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.12.0.tgz#e6d9dbe57cbefe60751f02af336195870c90c01e"
 
@@ -3067,6 +3071,13 @@ match-at@^0.1.0:
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"
+
+mavon-editor@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/mavon-editor/-/mavon-editor-2.2.2.tgz#1889cca9a6f7b99e5e973fef8b0ba3dafe12ecd7"
+  dependencies:
+    highlight.js "^9.11.0"
+    highlight.js-async-webpack "^1.0.4"
 
 mdurl@~1.0.1:
   version "1.0.1"
@@ -3935,6 +3946,10 @@ punycode@^1.2.4, punycode@^1.4.1:
 q@^1.1.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.0.tgz#dd01bac9d06d30e6f219aecb8253ee9ebdc308f1"
+
+qiniu.js@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/qiniu.js/-/qiniu.js-0.1.2.tgz#a6343b46b0d6fead63363c454cff5854c37172ab"
 
 qs@6.4.0, qs@~6.4.0:
   version "6.4.0"

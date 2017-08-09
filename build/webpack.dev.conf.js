@@ -28,7 +28,26 @@ module.exports = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      chunks: [
+        'app',
+        'hljs.bash',
+        'hljs.coffeescript',
+        'hljs.excel',
+        'hljs.java',
+        'hljs.javascript',
+        'hljs.json',
+        'hljs.less',
+        'hljs.cpp',
+        'hljs.markdown',
+        'hljs.php',
+        'hljs.python',
+        'hljs.scss',
+        'hljs.shell',
+        'hljs.sql',
+        'hljs.vim',
+        'hljs.xml'
+      ]
     }),
     new FriendlyErrorsPlugin()
   ]

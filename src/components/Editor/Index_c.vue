@@ -3,16 +3,19 @@
     <MenuBar @save="saveBlog"></MenuBar>
     <div class="content">
       <div class="profile">
-        <input type="text" placeholder="文章标题" v-model="title">
+        <input type="text" placeholder="输入标题" v-model="title">
       </div>
-      <div class="edit" id="edit">
-        <mavon-editor
-          style="min-height: 700px;"
-          v-model="source"
-          @change="change"
-          ref="editor"
-          :ishljs = "true"
-          @imgAdd='imgAddSuccess'></mavon-editor>
+      <div class="edit">
+        <textarea v-model="source"></textarea>
+      </div>
+      <div class="preview">
+        <div class="preview--content">
+          <VueMarkdown
+          :watches="['show','html','breaks','linkify','emoji','typographer','toc']"
+          :show="show" :html="html" :breaks="breaks" :linkify="linkify"
+          :emoji="emoji" :typographer="typographer" :toc="toc"
+          :source="source"></VueMarkdown>
+        </div>
       </div>
     </div>
   </div>
@@ -20,80 +23,27 @@
 
 <script>
   import MenuBar from 'components/Common/Menu'
-  import { mavonEditor } from 'mavon-editor'
-  import qiniu from 'qiniu.js'
-  import config from '../../helper/config'
-  qiniu.config(config.qiniu)
-  var imagesBucket = null
+  import VueMarkdown from 'vue-markdown'
 
   export default {
     data () {
       return {
         source: '',
-        html: '',
         title: '',
-        isUpLoadingImg: false
+        show: true,
+        html: true,
+        breaks: true,
+        linkify: false,
+        emoji: true,
+        typographer: true,
+        toc: false
       }
     },
-    mounted () {
-      let {id} = this.$route.query
+    created () {
+      let id = this.$route.query.id
       id && (this.getSingleBlog(id))
-      this.getUpToken((upToken) => {
-        imagesBucket = new qiniu.Bucket('images', {
-          putToken: upToken
-        })
-      })
-      document.getElementById('edit').onkeydown = function(e){
-        if (e.keyCode == 9) {
-          return false
-        }
-      }
     },
     methods: {
-      change (source, html) {
-        this.html = html
-      },
-      // 添加图片
-      imgAddSuccess (filename, file) {
-        const timestamp = Date.parse(new Date())
-        if (this.isUpLoadingImg) {
-          this.$swal({
-            title: '错误信息',
-            text: '刚添加的图片正在上传到七牛后台，不要连续上传。',
-            type: 'error'
-          })
-          return false
-        }
-        this.isUpLoadingImg = true
-        imagesBucket.putFile(timestamp, file).then(
-          (reply) => {
-            // 上传成功
-            const {hash, key} = reply
-            let imageURl = `${config.qiniu.url}/${key}-${config.qiniu.style}`
-            let img = document.createElement("img")
-            img.src = imageURl
-            img.onload = () => {
-              this.isUpLoadingImg = false
-              this.$refs.editor.$img2Url(filename, imageURl)
-            }
-          },
-          (err) => {
-            // 上传失败
-            this.isUpLoadingImg = false
-            console.error(err);
-          }
-        )
-      },
-      // 出事化获取upToken
-      getUpToken(cb) {
-        this.$http.post('/api/sendUpToken', {}).then((response) => {
-          let res = response.body
-          if (res.code === 0) {
-            const {upToken} = res
-            cb && cb(upToken)
-          }
-        })
-      },
       // 获取单挑博客信息
       getSingleBlog (id) {
         this.$http.post('/api/getSingleBlog', {id: id}).then((response) => {
@@ -106,22 +56,15 @@
       },
       // 保存操作
       saveBlog () {
+        // console.log('保存操作')
         let id = this.$route.query.id
-        if( this.source == '' || this.title == ''){
+        if( this.source == '' || this.title == '' ){
           this.$swal({
             title: '字段为空！',
             text: '有字段未填写，填写完整后在提交保存。',
             type: 'error'
           })
-          return false
-        }
-        if (this.isUpLoadingImg) {
-          this.$swal({
-            title: '错误提示',
-            text: '正在上传将刚添加的图片上传到七牛服务器，上传成功后在保存。',
-            type: 'error'
-          })
-          return false
+          return
         }
         if( id ){
           this.updateBlog()
@@ -135,7 +78,6 @@
         data.id = this.$route.query.id
         data.content = this.source
         data.title = this.title
-        data.html = this.html
         let _this = this
         this.$http.post('/api/updateSingleBlog', data).then((response) => {
           let res = response.body
@@ -150,13 +92,17 @@
           }
         })
       },
+      // 清空数据
+      clearBlog () {
+        this.source = ''
+        this.title = ''
+      },
       // 新增一条博客
       insertBlog () {
         let data = {}
         data.author = 'YangLeiLei'
         data.title = this.title
         data.content = this.source
-        data.html = this.html
         let _this = this
         this.$http.post('/api/insertSingleBlog', data).then((response) => {
           let res = response.body
@@ -172,9 +118,19 @@
         })
       }
     },
+    watch: {
+      '$route' () {
+        let id = this.$route.query.id
+        if (id) {
+          this.getSingleBlog(id)
+        } else {
+          this.clearBlog()
+        }
+      }
+    },
     components: {
       MenuBar,
-      mavonEditor
+      VueMarkdown
     }
   }
 </script>
@@ -182,6 +138,7 @@
   .page--editor {
     .profile {
       margin: 30px 0px;
+      padding-left: 15px;
       input {
         height: 42px;
         line-height: 42px;
@@ -189,18 +146,54 @@
         width: 610px;
         padding: 0px 12px;
         border-radius: 4px;
-        font-size: 14px;
         border: 1px #ccc solid;
       }
     }
     .content {
       width: 1280px;
-      margin: 20px auto 0px auto;
+      margin: 0 auto;
 
+      %common {
+        float: left;
+        padding: 15px;
+        box-sizing: border-box;
+
+        &::after {
+          clear: both;
+        }
+      }
       .edit {
-        position: relative;
-        z-index: 1;
-        min-height: 700px;
+        @extend %common;
+        width: 50%;
+        height: 800px;
+
+        textarea {
+          width: 100%;
+          height: 100%;
+          display: block;
+          box-sizing: border-box;
+          padding: 10px;
+          border-radius: 4px;
+          border: 1px #ccc solid;
+        }
+      }
+
+      .preview {
+        @extend %common;
+        width: 50%;
+        height: 800px;
+
+        &--content {
+          width: 100%;
+          height: 100%;
+          display: block;
+          box-sizing: border-box;
+          padding: 20px;
+          border: 1px #f5f2f0 solid;
+          border-radius: 4px;
+          background: #fff;
+          overflow: auto;
+        }
       }
     }
   }

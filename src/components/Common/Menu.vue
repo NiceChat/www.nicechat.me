@@ -4,7 +4,8 @@
       <div class="menu--content">
         <router-link tag='div' class='logo' :to="{path: 'home'}">YangLeiLei`s Notes</router-link>
         <template v-if="isLogin">
-          <router-link tag='div' class='edit' :to="{path: 'editor'}"><button class="btn">新增</button></router-link>
+          <router-link tag='div' v-if="!editPage"  class='edit' :to="{path: 'editor'}"><button class="btn">新增</button></router-link>
+          <div class="edit" v-if="editPage"><button class="btn" @click='goBack'>取消</button></div>
           <div class="edit" v-if="editPage"><button class="btn" @click="saveBlog">保存</button></div>
           <div class="edit" v-if="infoPage"><button class="btn" @click="editBlog">编辑</button></div>
           <div class="edit" v-if="infoPage"><button class="btn" @click="delBlog">删除</button></div>
@@ -39,6 +40,10 @@
       }
     },
     methods: {
+      // 取消操作
+      goBack () {
+        window.history.go(-1)
+      },
       // 编辑操作
       editBlog () {
         this.$emit('edit')
@@ -91,6 +96,18 @@
           color: #fff;
           margin-top: 28px;
           background: transparent;
+          display: inline-block;
+          padding: 6px 12px;
+          margin-bottom: 0;
+          font-size: 14px;
+          line-height: 1.5;
+          text-align: center;
+          white-space: nowrap;
+          vertical-align: middle;
+          touch-action: manipulation;
+          cursor: pointer;
+          user-select: none;
+          border-radius: 4px;
 
           &:hover {
             background: #fff;
