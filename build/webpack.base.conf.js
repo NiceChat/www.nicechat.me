@@ -12,7 +12,6 @@ var _entry= {
   app: './src/main.js'
 }
 for (var i = 0; i < lang.length; i++) {
-  console.log(lang[i])
   _entry[lang[i]] = ['mavon-editor/dist/js/' + lang[i] + '.js']
 }
 

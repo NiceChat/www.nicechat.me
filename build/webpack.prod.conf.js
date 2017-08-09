@@ -49,9 +49,29 @@ var webpackConfig = merge(baseWebpackConfig, {
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
+      chunks: [
+        'app',
+        'hljs.bash',
+        'hljs.coffeescript',
+        'hljs.excel',
+        'hljs.java',
+        'hljs.javascript',
+        'hljs.json',
+        'hljs.less',
+        'hljs.cpp',
+        'hljs.markdown',
+        'hljs.php',
+        'hljs.python',
+        'hljs.scss',
+        'hljs.shell',
+        'hljs.sql',
+        'hljs.vim',
+        'hljs.xml'
+      ],
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -66,6 +86,25 @@ var webpackConfig = merge(baseWebpackConfig, {
         )
       }
     }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      async: false,
+      name: 'mavon-editor',
+      chunks: ['vendor'],
+      minChunks: ({ resource }, count) => {
+        return resource && /mavon-editor/.test(resource)
+      }
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      async: false,
+      name: 'moment',
+      chunks: ['vendor'],
+      minChunks: ({ resource }, count) => {
+        return resource && /moment/.test(resource)
+      }
+    }),
+
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
