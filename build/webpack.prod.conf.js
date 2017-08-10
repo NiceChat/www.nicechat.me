@@ -18,7 +18,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    filename: utils.assetsPath('js/[name].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
@@ -50,6 +50,10 @@ var webpackConfig = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       chunks: [
+        'manifest',
+        'vendor',
+        'mavon-editor',
+        'moment',
         'app',
         'hljs.bash',
         'hljs.coffeescript',
@@ -68,8 +72,40 @@ var webpackConfig = merge(baseWebpackConfig, {
         'hljs.vim',
         'hljs.xml'
       ],
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      chunksSortMode: function (chunk1, chunk2) {
+        var orders =  [
+          'manifest',
+          'vendor',
+          'mavon-editor',
+          'moment',
+          'app',
+          'hljs.bash',
+          'hljs.coffeescript',
+          'hljs.excel',
+          'hljs.java',
+          'hljs.javascript',
+          'hljs.json',
+          'hljs.less',
+          'hljs.cpp',
+          'hljs.markdown',
+          'hljs.php',
+          'hljs.python',
+          'hljs.scss',
+          'hljs.shell',
+          'hljs.sql',
+          'hljs.vim',
+          'hljs.xml'
+        ];
+        var order1 = orders.indexOf(chunk1.names[0]);
+        var order2 = orders.indexOf(chunk2.names[0]);
+        if (order1 > order2) {
+          return 1;
+        } else if (order1 < order2) {
+          return -1;
+        } else {
+          return 0;
+        }
+      }
     }),
 
     // split vendor js into its own file
@@ -87,6 +123,13 @@ var webpackConfig = merge(baseWebpackConfig, {
       }
     }),
 
+    // extract webpack runtime and module manifest to its own file in order to
+    // prevent vendor hash from being updated whenever app bundle is updated
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      chunks: ['vendor']
+    }),
+
     new webpack.optimize.CommonsChunkPlugin({
       async: false,
       name: 'mavon-editor',
@@ -96,6 +139,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       }
     }),
 
+
     new webpack.optimize.CommonsChunkPlugin({
       async: false,
       name: 'moment',
@@ -103,14 +147,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       minChunks: ({ resource }, count) => {
         return resource && /moment/.test(resource)
       }
-    }),
-
-    // extract webpack runtime and module manifest to its own file in order to
-    // prevent vendor hash from being updated whenever app bundle is updated
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
     })
+
   ]
 })
 
