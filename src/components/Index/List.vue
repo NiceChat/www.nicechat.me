@@ -69,7 +69,7 @@
   }
 </script>
 
-<style lang="scss" rel="stylesheet/scss" scoped>
+<style lang="scss" rel="stylesheet/scss">
   @import '../../style/var';
   .list {
     width: $listWidth;
@@ -92,7 +92,7 @@
        position: absolute;
        top: 0px;
        width: 100%;
-       height: 6px;
+       height: 3px;
        left: 0px;
        background: $color_opacity;
      }
@@ -104,9 +104,9 @@
        z-index: 99;
        bottom: 0;
        left: 0;
-       height: 60px;
+       height: 100%;
        pointer-events: none;
-       background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(23, 85, 142, 0.1));
+       background-image:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0) 60%,rgba(255,255,255,1));
      }
 
      &:hover {
@@ -116,10 +116,6 @@
         &:after {
           background: $color;
         }
-
-        &:before {
-          background-image:linear-gradient(180deg,rgba(255,0,0,0),rgba(23, 85, 142, 0.15));
-        }
      }
 
      &--right {
@@ -128,7 +124,7 @@
        position: relative;
 
        .title {
-         font-size: 28px;
+         font-size: 24px;
          color: #555;
          line-height: 25px;
          letter-spacing: 1px;
@@ -136,13 +132,19 @@
 
        .description {
          margin-top: 10px;
-         font-size: 14px;
+         font-size: 14px !important;
          color: #666666;
          max-height: 220px;
          line-height: 25px;
          overflow: hidden;
          text-align: justify;
          letter-spacing: 1px;
+
+         .markdown-body {
+           p {
+             font-size: 14px;
+           }
+         }
        }
 
        .base {

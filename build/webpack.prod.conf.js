@@ -41,6 +41,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: config.build.index,
       template: 'index.html',
+      favicon: 'src/assets/favicon.png',
       inject: true,
       minify: {
         removeComments: true,
@@ -49,63 +50,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      chunks: [
-        'manifest',
-        'vendor',
-        'mavon-editor',
-        'moment',
-        'app',
-        'hljs.bash',
-        'hljs.coffeescript',
-        'hljs.excel',
-        'hljs.java',
-        'hljs.javascript',
-        'hljs.json',
-        'hljs.less',
-        'hljs.cpp',
-        'hljs.markdown',
-        'hljs.php',
-        'hljs.python',
-        'hljs.scss',
-        'hljs.shell',
-        'hljs.sql',
-        'hljs.vim',
-        'hljs.xml'
-      ],
-      chunksSortMode: function (chunk1, chunk2) {
-        var orders =  [
-          'manifest',
-          'vendor',
-          'mavon-editor',
-          'moment',
-          'app',
-          'hljs.bash',
-          'hljs.coffeescript',
-          'hljs.excel',
-          'hljs.java',
-          'hljs.javascript',
-          'hljs.json',
-          'hljs.less',
-          'hljs.cpp',
-          'hljs.markdown',
-          'hljs.php',
-          'hljs.python',
-          'hljs.scss',
-          'hljs.shell',
-          'hljs.sql',
-          'hljs.vim',
-          'hljs.xml'
-        ];
-        var order1 = orders.indexOf(chunk1.names[0]);
-        var order2 = orders.indexOf(chunk2.names[0]);
-        if (order1 > order2) {
-          return 1;
-        } else if (order1 < order2) {
-          return -1;
-        } else {
-          return 0;
-        }
-      }
+      chunks: ['manifest', 'vendor', 'hl-language', 'mavon-editor', 'moment', 'app'],
+      chunksSortMode: 'manual'
     }),
 
     // split vendor js into its own file
@@ -139,6 +85,14 @@ var webpackConfig = merge(baseWebpackConfig, {
       }
     }),
 
+    new webpack.optimize.CommonsChunkPlugin({
+      async: false,
+      name: 'hl-language',
+      chunks: ['mavon-editor'],
+      minChunks: ({ resource }, count) => {
+        return resource && /hljs/.test(resource)
+      }
+    }),
 
     new webpack.optimize.CommonsChunkPlugin({
       async: false,

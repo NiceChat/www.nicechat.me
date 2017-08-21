@@ -11,8 +11,29 @@ var lang = require('highlight.js-async-webpack/src/file.lang.hljs.js');
 var _entry= {
   app: './src/main.js'
 }
+var iNeedLanguage = [
+  'hljs.bash',
+  'hljs.coffeescript',
+  'hljs.excel',
+  'hljs.java',
+  'hljs.javascript',
+  'hljs.json',
+  'hljs.less',
+  'hljs.cpp',
+  'hljs.markdown',
+  'hljs.php',
+  'hljs.python',
+  'hljs.scss',
+  'hljs.shell',
+  'hljs.sql',
+  'hljs.vim',
+  'hljs.xml'
+]
+
 for (var i = 0; i < lang.length; i++) {
-  _entry[lang[i]] = ['mavon-editor/dist/js/' + lang[i] + '.js']
+  if (iNeedLanguage.indexOf(lang[i]) !== -1) {
+    _entry[lang[i]] = ['mavon-editor/dist/js/' + lang[i] + '.js']
+  }
 }
 
 module.exports = {
