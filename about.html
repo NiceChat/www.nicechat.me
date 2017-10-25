@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PPT-impress.js</title>
+</head>
+<body>
+  <div id="impress" data-transition-duration="1000">
+    <div id="intro" class="step" data-x="-1000" data-y="0" data-z='6000' data-scale="10">
+      <div class="img"></div>
+      <h2>微信小程序</h2>
+      <p>--国信泰九|互联网研发部 杨磊磊</p>
+    </div>
+
+    <div id="whatis" class="step" data-x="-1000" data-y="-1500">
+      <h1>1. 小程序是什么，使用场景，有何特色?</h1>
+    </div>
+
+    <div id="whatis_1" class="step" data-x="-1000" data-y="-1000" data-rotate-x="-30" data-z="-50">
+      <h2>微信小程序是基于微信体系，无需下载安装就可以使用的应用，体积一般都不超过1M,是一个微信直接打开能用的小应用。于2017-01-09正式公诸于世面向开发者。</h2>
+    </div>
+
+    <div id="whatis_2" class="step" data-x="-1000" data-y="-500" data-rotate-x="0" data-z="0">
+      <h2>小程序的使用场景比如：发放优惠券、活动预约、共享单车、订外卖、看天气、安排日程…等等生活场景。</h2>
+    </div>
+    
+    <div id="whatis_3" class="step" data-x="-1000" data-y="0" data-rotate-x="-30" data-z="-50">
+      <h2>它无需安装、触手可及、用完即走、无需卸载。</h2>
+    </div>
+
+    <div id="ready" class="step" data-x="2000" data-y="-1500">
+      <h1>2. 开发前你需要具备什么？</h1>
+    </div>
+    <div id="ready_1" class="step" data-x="2000" data-y="-1000" data-rotate-x="-30" data-z="-50">
+      <h1 class="middle">设计？</h1>
+      <h2>前端开发中度依赖UI，要求遵循微信Ui设计规范是个非常不错的选择。</h2>
+    </div>
+
+    <div id="ready_2" class="step" data-x="2000" data-y="-500" data-rotate-x="0" data-z="0">
+      <h1 class="middle">开发工具？</h1>
+      <h2>微信有自己开发套件。但是在项目时间过程中，我并不推荐大家使用开发者工具开发，但是强烈推荐用它来调试。</h2>
+    </div>
+    
+    <div id="ready_3" class="step" data-x="2000" data-y='0' data-rotate-x="-30" data-z="-50">
+      <h1 class="middle">成为开发者？</h1>
+      <h2>注册小程序账号，这个一般是公司的运营人员去操作，运营同学完成前期的注册后尽量要求运营同学暂时将管理员转让给前端负责人。小程序的开封这设置、上传代码、发布版本、域名服务配置都需要管理员的权限才能设置。</h2>
+    </div>
+
+    <div id="go" class="step" data-x="4000" data-y="-1500">
+      <h1>3. 让我们开始吧</h1>
+    </div>
+    
+    <div id="go-1" class="step go" data-x="4000" data-y="-1000" data-rotate-x="-30">
+      <div class="img">
+        <div class="img--bind"></div>
+        <h3>绑定开发者</h3>
+      </div>
+    </div>
+    
+    <div id="go-2" class="step go" data-x="4000" data-y="-1000" data-rotate-x="-30">
+      <div class="img">
+        <div class="img--get"></div>
+        <h3>获取APPID</h3>
+      </div>
+    </div>
+    
+    <div id="go-3" class="step go" data-x="4000" data-y="-1000" data-rotate-x="-30">
+      <div class="img">
+        <div class="img--init"></div>
+        <h3>初始化项目</h3>
+      </div>
+    </div>
+    
+    <div id="go-4" class="step" data-x="4000" data-y="-500" data-rotate-x="0">
+      <h2>3.1 几个需要了解几个概念和基本文件作用</h2>
+      <ul style='margin-left: 40px; margin-top: 30px;'>
+        <li>小程序&页面生命周期。</li>
+        <li>app.js app.json app.wxs作用分别是什么。</li>
+        <li>如何创建页面&页面路由如何配置。</li>
+      </ul>
+    </div>
+    
+    <div id="go-5" class="step" data-x="4000" data-y="0" data-rotate-x="-30">
+      <h2>3.2 发起网络请求wx.requst()</h2>
+      <ul style='margin-left: 40px; margin-top: 30px;'>
+        <li>需要在小程序开发设置-服务器域名中配置后端服务。</li>
+        <li>域名只支持https, 不能使用localhost和Ip地址。</li>
+        <li>域名还必须ICP备案。</li>
+        <li>请求并发数不超过5个。</li>
+        <li>不过开发阶段可以再关闭域名验证。</li>
+      </ul>
+    </div>
+
+    <div id="go-6" class="step go2" data-x="4000" data-y="500" data-rotate-x="0">
+      <h2>3.3 维护登录信息</h2>
+      <ol style='margin-left: 40px; margin-top: 30px;'>
+        <li>wx.login() 获取code</li>
+        <li>使用code与后台交换session</li>
+        <li>后端接受code返回session给前端</li>
+        <li>采用localStorage存储session</li>
+      </ol>
+    </div>
+    
+    <div id="go-7" class="step go2" data-x="4000" data-y="500" data-rotate-x="0">
+      <div class="img">
+        <div class="img--session"></div>
+      </div>
+    </div>
+
+    <div id="go-8" class="step" data-x="4000" data-y="1200" data-rotate-x="-30">
+      <h2>3.4 如何获取用户的手机号码</h2>
+      <p class="middle">通过getPhoneNumber。注意：目前该接口针对非个人开发者，且完成了认证的小程序开放。需谨慎使用，若用户举报较多或被发现在不必要场景下使用，微信有权永久回收该小程序的该接口权限。</p>
+      <h2 style="margin-top: 30px;">3.5 页面堆栈区不超过5个</h2>
+      <h2 style="margin-top: 30px;">3.6 静态资源如何引用。</h2>
+      <p class="middle">background-image可以使用网络图片，或者 base64，或者使用image标签。</p>
+    </div>
+
+
+    <div id="go-9" class="step" data-x="4000" data-y="1700" data-rotate-x="0">
+      <h2>3.7 如何引入第三方模块。</h2>
+      <pre>
+        <code>
+          Const util = {
+            foo,
+            …
+          }
+
+          Modles.export = util
+
+
+          // 在某个pages页面
+          Import utils from ‘./utils’
+
+        </code>
+      </pre>
+      <p class="middle"> 完全和我们组件编写一致。</p>
+    </div>
+    
+
+    <div id="go-10" class="step" data-x="4000" data-y="2300" data-rotate-x="-30">
+      <h2>3.8 公用模块如何编写。</h2>
+      <pre>
+        <code>
+          &lt;import src="../tip/tip.wxml"/&gt;
+          &lt;template is="tip" data="{{show: showTips, type: type}}"/&gt;
+
+
+          &lt;template name="tip"&gt;
+            &lt;view class="tip" wx:if='{{ show }}'&gt;
+            &lt;view class="img"&gt;&lt;/view&gt;
+            &lt;text class="font"&gt;合格投资者身份确认成功&lt;/text&gt;
+            &lt;text class="font__sub"&gt;您的风险承受能力：&lt;text class="b"&gt;{{ type }}&lt;/text&gt;&lt;/text&gt;
+            &lt;/view&gt;
+          &lt;/template&gt;
+
+        </code>
+      </pre>
+    </div>
+
+    <div id="go-11" class="step" data-x="4000" data-y="2800" data-rotate-x="0">
+      <h2>3.9 页面的骨架组成-组件&数据绑定</h2>
+
+      <p class="middle">
+        <pre>
+          <code>
+            this.setData({
+              page: 1
+            })
+          </code>
+        </pre>
+      </p>
+      <h2 style="margin-top: 20px;">3.10 了解<a target="_blank" href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/">Api</a>。用户信息、卡券、操作文件、预览图片等等。</h2>
+      <h2 style="margin-top: 30px;">3.11 实时预览开发效果。需要登录微信扫描二维码。</h2>
+    </div>
+  
+    <div id="go-12" class="step" data-x="4000" data-y="3600" data-rotate-x="-30">
+      <h2>3.12 设置调试的编译模式。</h2>
+      <div class="img">
+        <div class="img--debug"></div>
+      </div> 
+      <p class="middle">能快速的进入相关页面，并且可以配置参数去调试，对分享页面进入小程序调试很有帮助。</p>
+    </div>
+
+    <div id="go-13" class="step" data-x="4000" data-y="4200" data-rotate-x="0">
+      <h2>3.13 项目工程的最后一步，如何部署？</h2>
+      <ul style='margin-left: 40px; margin-top: 30px;'>
+        <li>需要项目管理者的身份，在微信开发者工具上，在将代码打上版本信息上传到微信管理后台。</li>
+        <li>然后有管理员登录后台进行操作。可以将版本设置成为体验版，邀请相关人员（产品、UI）进行相关测试。</li>
+        <li>发现问题, 改正后重回步骤1， 直到所有问题解决后提交正式版本。填写相关表单信息，提交审核。需要审核大约15个工作日。</li>
+      </ul>
+    </div>
+
+    <div id="over" class="step" data-x="6000" data-y="-1500">
+      <h1>4. 总结</h1>
+    </div>
+
+    <div id="over-1" class="step" data-x="6000" data-y="-1000"  data-rotate-x="30" data-z="50">
+      <h1>和我们平时开发项目上有哪些区别？</h1>
+      <h2 style="margin-top: 80px;">
+        和传统页面上的开发而言，一个页面的创建显得很麻烦。不支持html直接编写，写的很膈应。<a href="https://wepyjs.github.io/wepy" target="_blank"> https://wepyjs.github.io/wepy</a>小程序组件化开发框架。 类似vue组件的模式去写小程序。
+      </h2>
+    </div>
+
+    <div id="over-2" class="step" data-x="6000" data-y="-500" data-rotate-x="-30" data-z="-50">
+      <h2>思考小程序所适合场景。审核耗时很长以及小程序那些方面能做那些方面不能做。别用心做了写功能却不能通过审核。</h2>
+    </div>
+
+    <div id="over-3" class="step" data-x="6000" data-y="0" data-rotate-x="30" data-z="50">
+      <h2>开发前，思考公用模块、公用方法等等。</h2>
+    </div>
+    
+    <div id="Thanks" class="step" data-x="5000" data-y="0" data-scale="10" data-z="20000">
+      <h1 class="big">Thanks!</h1>
+    </div>
+    
+  </div>
+</body>
+</html>

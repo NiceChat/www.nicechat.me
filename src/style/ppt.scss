@@ -1,0 +1,289 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: 'Microsoft YaHei', Arial, sans-serif;
+}
+ol, ul {
+  font-size: 30px;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font-family: 'PT Sans', sans-serif;
+  min-height: 740px;
+  background: rgb(215, 215, 215);
+  background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+  background: radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+}
+
+b, strong { font-weight: bold }
+i, em { font-style: italic }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  padding: 0 0.1em;
+  background: rgba(255,255,255,0.5);
+  text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
+  border-radius: 0.2em;
+  transition: 0.5s;
+}
+
+a:hover,
+a:focus {
+  background: rgba(255,255,255,1);
+  text-shadow: -1px -1px 2px rgba(100,100,100,0.5);
+}
+
+h1 {
+  font-size: 48px;
+
+  &.middle {
+    font-size: 44px;
+    line-height: 4;
+  }
+
+  &.big {
+    font-size: 120px;
+    line-height: 2;
+  }
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 12px;
+
+  &.middle {
+    font-size: 24px;
+    line-height: 1.5;
+  }
+}
+
+.step {
+  position: relative;
+  width: 1200px;
+  padding: 40px;
+  margin: 20px auto;
+  box-sizing: border-box;
+  line-height: 1.5; }
+
+.impress-enabled .step {
+  margin: 0;
+  opacity: 0.3;
+  transition: opacity 1s;
+}
+
+.impress-enabled .step.active { opacity: 1 }
+.slide {
+  display: block;
+  width: 1200px;
+  height: 700px;
+  padding: 40px 60px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  color: rgb(102, 102, 102);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -1px;
+}
+
+.slide q {
+  display: block;
+  font-size: 50px;
+  line-height: 72px;
+  margin-top: 100px;
+}
+
+.slide q strong {
+  white-space: nowrap;
+}
+
+#intro {
+  text-align: center;
+
+  .img {
+    display: inline-block;
+    background-image: url(../ppt/demo.png);
+    background-size: 100% 100%;
+    width: 140px;
+    height: 140px;
+  }
+
+  h2 {
+    font-size: 50px;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 24px;
+    text-indent: 20em;
+    color: #666;
+  }
+}
+
+.img {
+  &--bind {
+    background-image: url(../ppt/bind.png);
+    background-size: 100% 100%;
+    width: 380px;
+    height: 380px;
+  }
+
+  &--get {
+    background-image: url(../ppt/ids.png);
+    background-size: 100% 100%;
+    width: 380px;
+    height: 380px;
+  }
+
+  &--init {
+    background-image: url(../ppt/init.png);
+    background-size: 100% 100%;
+    width: 380px;
+    height: 380px;
+  }
+
+  &--session {
+    background-image: url(../ppt/login.png);
+    background-size: 100% 100%;
+    width: 700px;
+    height: 800px;
+  }
+
+  &--debug {
+    background-image: url(../ppt/debug.png);
+    background-size: 100% 100%;
+    width: 800px;
+    height: 600px;
+  }
+}
+
+#whatis {
+  position: relative;
+}
+
+#whatis_1 {
+}
+
+.go, .go2 {
+  height: 600px;
+  position: relative;
+
+  h3 {
+    width: 380px;
+    line-height: 5;
+    text-align: center;
+  }
+
+  &.future {
+    opacity: 0;
+  }
+
+  &.present {
+    opacity: 1;
+    transition: opacity .3 ease-in;
+  }
+
+  &.past {
+    opacity: 0.6;
+    transition: opacity .3 ease-in;
+  } 
+}
+
+.go2 {
+  height: 700px;
+}
+
+#go-1 {
+  .img {
+    position: absolute;
+    top: 100px;
+    left: 0px;
+  }
+}
+
+#go-2 {
+  .img {
+    position: absolute;
+    top: 100px;
+    left: 400px;
+  }
+}
+
+#go-3 {
+  .img {
+    top: 100px;
+    position: absolute;
+    left: 800px;
+  }
+}
+
+#go-6 {
+  padding-top: 200px;
+}
+
+#go-7 {
+  .img {
+    top: 0px;
+    position: absolute;
+    left: 600px;
+  }
+}
+
+
+.impress-on-overview .step {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.impress-enabled          { pointer-events: none }
+.impress-enabled #impress { pointer-events: auto }
+

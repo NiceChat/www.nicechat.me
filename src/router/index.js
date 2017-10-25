@@ -6,6 +6,7 @@ import Index from 'components/Index'
 import Login from 'components/Login'
 import Editor from 'components/Editor'
 import Info from 'components/Info'
+import About from 'components/About'
 
 Vue.use(Router)
 
@@ -17,6 +18,7 @@ export default new Router({
     {path: '/login', component: Login},
     {path: '/editor', component: Editor},
     {path: '/info', component: Info},
+    {path: '/about', component: About},
     // 404 页面
     {path: '*', component: NotFoundComponent}
   ]

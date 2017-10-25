@@ -50,6 +50,14 @@ module.exports = merge(baseWebpackConfig, {
         'hljs.xml'
       ]
     }),
+    new HtmlWebpackPlugin({
+      filename: 'about.html',
+      template: 'about.html',
+      favicon: 'src/assets/favicon.png',
+      inject: true,
+      chunks: ['manifest', 'ppt'],
+      chunksSortMode: 'manual'
+    }),
     new FriendlyErrorsPlugin()
   ]
 })

@@ -53,7 +53,15 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunks: ['manifest', 'vendor', 'hl-language', 'mavon-editor', 'moment', 'app'],
       chunksSortMode: 'manual'
     }),
-
+    new HtmlWebpackPlugin({
+      filename: 'about.html',
+      template: 'about.html',
+      favicon: 'src/assets/favicon.png',
+      favicon: 'src/assets/favicon.png',
+      inject: true,
+      chunks: ['manifest', 'ppt'],
+      chunksSortMode: 'manual'
+    }),
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

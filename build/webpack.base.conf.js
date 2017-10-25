@@ -9,7 +9,8 @@ function resolve (dir) {
 
 var lang = require('highlight.js-async-webpack/src/file.lang.hljs.js');
 var _entry= {
-  app: './src/main.js'
+  app: './src/main.js',
+  ppt: './src/ppt.js'
 }
 var iNeedLanguage = [
   'hljs.bash',
