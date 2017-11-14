@@ -43,13 +43,14 @@ var webpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       favicon: 'src/assets/favicon.png',
       inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      },
+      // minify: {
+      //   removeComments: true,
+      //   collapseWhitespace: true,
+      //   removeAttributeQuotes: true
+      //   // more options:
+      //   // https://github.com/kangax/html-minifier#options-quick-reference
+      // },
+      minify: false,
       chunks: ['manifest', 'vendor', 'hl-language', 'mavon-editor', 'moment', 'app'],
       chunksSortMode: 'manual'
     }),
@@ -59,7 +60,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       favicon: 'src/assets/favicon.png',
       favicon: 'src/assets/favicon.png',
       inject: true,
-      chunks: ['manifest', 'ppt'],
+      minify: false,
+      chunks: ['manifest', 'vendor', 'ppt'],
       chunksSortMode: 'manual'
     }),
     // split vendor js into its own file
