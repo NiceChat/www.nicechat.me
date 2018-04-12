@@ -121,8 +121,8 @@ p {
 .slide {
   display: block;
   width: 1200px;
-  height: 700px;
-  padding: 40px 60px;
+  height: 800px;
+  // padding: 40px 60px;
   background-color: white;
   border: 1px solid rgba(0, 0, 0, .3);
   border-radius: 10px;
@@ -204,6 +204,114 @@ p {
     width: 800px;
     height: 600px;
   }
+
+  &--frame1 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.001.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame2 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.002.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame3 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.003.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame4 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.004.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame5 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.005.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame6 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.006.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame7 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.007.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame8 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.008.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame9 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.009.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame10 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.010.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+
+  &--frame11 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.011.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+
+  &--frame12 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.012.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+  &--frame13 {
+    border-radius: 10px;
+    background-image: url(../ppt/GOGO.013.png);
+    background-size: 100% 100%;
+    width: 1200px;
+    height: 800px;
+  }
+
+
 }
 
 #whatis {
@@ -286,4 +394,6 @@ p {
 
 .impress-enabled          { pointer-events: none }
 .impress-enabled #impress { pointer-events: auto }
+
+.nopadding { padding: 0px !important;}
 

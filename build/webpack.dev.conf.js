@@ -51,8 +51,8 @@ module.exports = merge(baseWebpackConfig, {
       ]
     }),
     new HtmlWebpackPlugin({
-      filename: 'about.html',
-      template: 'about.html',
+      filename: 'ppt.html',
+      template: 'ppt.html',
       favicon: 'src/assets/favicon.png',
       inject: true,
       chunks: ['manifest', 'ppt'],

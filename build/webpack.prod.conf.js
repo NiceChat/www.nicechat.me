@@ -55,9 +55,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'manual'
     }),
     new HtmlWebpackPlugin({
-      filename: 'about.html',
-      template: 'about.html',
-      favicon: 'src/assets/favicon.png',
+      filename: 'ppt.html',
+      template: 'ppt.html',
       favicon: 'src/assets/favicon.png',
       inject: true,
       minify: false,

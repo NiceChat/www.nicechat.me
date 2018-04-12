@@ -11,13 +11,50 @@
       <h2>微信小程序</h2>
       <p>--国信泰九|互联网研发部 杨磊磊</p>
     </div>
-
+    <!-- 传统普通幻灯片 -->
+    <div id="frame1" class="step slide nopadding" data-x="-2000" data-y="-4700">
+      <div class="img--frame1"></div>
+    </div>
+    <div id="frame2" class="step slide nopadding" data-x="-500" data-y="-4700">
+      <div class="img--frame2"></div>
+    </div>
+    <div id="frame4" class="step slide nopadding" data-x="1000" data-y="-4700">
+      <div class="img--frame4"></div>
+    </div>
+    <div id="frame5" class="step slide nopadding" data-x="2500" data-y="-4700">
+      <div class="img--frame5"></div>
+    </div>
+    <div id="frame6" class="step slide nopadding" data-x="4000" data-y="-4700">
+      <div class="img--frame6"></div>
+    </div>
+    <div id="frame7" class="step slide nopadding" data-x="5500" data-y="-4700">
+      <div class="img--frame7"></div>
+    </div>
+    <div id="frame8" class="step slide nopadding" data-x="-2000" data-y="-3500">
+      <div class="img--frame8"></div>
+    </div>
+    <div id="frame9" class="step slide nopadding" data-x="-500" data-y="-3500">
+      <div class="img--frame9"></div>
+    </div>
+    <div id="frame10" class="step slide nopadding" data-x="1000" data-y="-3500">
+      <div class="img--frame10"></div>
+    </div>
+    <div id="frame11" class="step slide nopadding" data-x="2500" data-y="-3500">
+      <div class="img--frame11"></div>
+    </div>
+    <div id="frame12" class="step slide nopadding" data-x="4000" data-y="-3500">
+      <div class="img--frame12"></div>
+    </div>
+    <div id="frame13" class="step slide nopadding" data-x="5500" data-y="-3500">
+      <div class="img--frame13"></div>
+    </div>
+    
     <div id="whatis" class="step" data-x="-1000" data-y="-1500">
-      <h1>1. 小程序是什么，使用场景，有何特色?</h1>
+      <h1>1. 使用场景，有何特色?</h1>
     </div>
 
     <div id="whatis_1" class="step" data-x="-1000" data-y="-1000" data-rotate-x="-30" data-z="-50">
-      <h2>微信小程序是基于微信体系，无需下载安装就可以使用的应用，体积一般都不超过1M,是一个微信直接打开能用的小应用。于2017-01-09正式公诸于世面向开发者。</h2>
+      <h2>微信小程序是基于微信体系，无需下载安装就可以使用的应用，体积一般都不超过2M,是一个微信直接打开能用的小应用。于2017-01-09正式公诸于世面向开发者。</h2>
     </div>
 
     <div id="whatis_2" class="step" data-x="-1000" data-y="-500" data-rotate-x="0" data-z="0">
@@ -43,7 +80,7 @@
     
     <div id="ready_3" class="step" data-x="2000" data-y='0' data-rotate-x="-30" data-z="-50">
       <h1 class="middle">成为开发者？</h1>
-      <h2>注册小程序账号，这个一般是公司的运营人员去操作，运营同学完成前期的注册后尽量要求运营同学暂时将管理员转让给前端负责人。小程序的开封这设置、上传代码、发布版本、域名服务配置都需要管理员的权限才能设置。</h2>
+      <h2>注册小程序账号，这个一般是公司的运营人员去操作，运营同学完成前期的注册后尽量要求运营同学暂时将管理员转让给前端负责人。小程序的开发人员的设置、上传代码、发布版本、域名服务配置都需要管理员的权限才能设置。</h2>
     </div>
 
     <div id="go" class="step" data-x="4000" data-y="-1500">
@@ -110,8 +147,7 @@
     <div id="go-8" class="step" data-x="4000" data-y="1200" data-rotate-x="-30">
       <h2>3.4 如何获取用户的手机号码</h2>
       <p class="middle">通过getPhoneNumber。注意：目前该接口针对非个人开发者，且完成了认证的小程序开放。需谨慎使用，若用户举报较多或被发现在不必要场景下使用，微信有权永久回收该小程序的该接口权限。</p>
-      <h2 style="margin-top: 30px;">3.5 页面堆栈区不超过5个</h2>
-      <h2 style="margin-top: 30px;">3.6 静态资源如何引用。</h2>
+      <h2 style="margin-top: 30px;">3.5 静态资源如何引用？</h2>
       <p class="middle">background-image可以使用网络图片，或者 base64，或者使用image标签。</p>
     </div>
 
@@ -166,6 +202,9 @@
             this.setData({
               page: 1
             })
+            1. 频繁的去 setData
+            2. 每次 setData 都传递大量新数据
+            3. 后台态页面进行 setData
           </code>
         </pre>
       </p>
