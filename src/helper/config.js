@@ -6,10 +6,9 @@ export default {
   appName: 'YangLei`s Notes',
   // 版本号
   ver: 'v1.0.1',
-  // 开发环境访问域名 http://server.nicechat.com/api/getBlogList
-  devHostName: 'http://server.nicechat.com',
+  devHostName: 'http://dev.server.leileissr.com',
   // 生产环境访问域名
-  proHostName: 'http://server.nicechat.me',
+  proHostName: 'http://server.leileissr.cn',
   // 前端模拟数据是否开启
   mock: false,
   // 系统统一处理errorCode
