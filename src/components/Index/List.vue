@@ -1,8 +1,14 @@
 <template>
   <div class="list">
-    <div class="item" v-for="item in list">
+    <div
+      class="item"
+      :key="key"
+      v-for="(item, key) in list">
       <template>
-        <router-link class='item--right' tag='div' :to='{ path: "/info", query:{"id": item.id} }'>
+        <router-link
+          class='item--right'
+          tag='div'
+          :to='{ path: "/info", query:{"id": item.id} }'>
           <h1 class="title">{{ item.title }}</h1>
           <p class="base">
             <span>更新时间：{{ item.ctime | format }}</span>
@@ -14,10 +20,12 @@
         </router-link>
       </template>
     </div>
-    <infinite-loading :on-infinite="getBlogsList" ref="infiniteLoading">
-       <span slot="no-more">
-         LeiLei, Havas finis ŝarĝo :(
-       </span>
+    <infinite-loading
+      :on-infinite="getBlogsList"
+      ref="infiniteLoading">
+        <span slot="no-more">
+          粤ICP备18035818号-1 &nbsp;&nbsp; LeiLei, Havas finis ŝarĝo :(
+        </span>
     </infinite-loading>
   </div>
 </template>
@@ -25,6 +33,7 @@
 <script>
   import VueMarkdown from 'vue-markdown'
   import InfiniteLoading from 'vue-infinite-loading'
+
   export default {
     data () {
       return {
@@ -37,31 +46,38 @@
         }
       }
     },
+
     created () {
       this.getBlogsList()
     },
+
     methods: {
       getBlogsList () {
         this.loading = true
         const {offset, page} = this.pager
-        this.$http.post('/api/getBlogList', {offset, page}).then(response => {
-          this.pager.page++
-          this.loading = false
-          let {list, code} = response.body
-          if (Number(code) === 0) {
-            this.list = this.list.concat(list)
-            this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
-            if (list.length < this.pager.offset) {
-              this.isLast = true
-              this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete')
-            }
-          }
 
-        }, response => {
-          // error callback
-        })
+        this.$http
+          .post('/api/getBlogList', {offset, page})
+          .then(response => {
+            this.pager.page++
+            this.loading = false
+            let {list, code} = response.body
+            if (Number(code) === 0) {
+              this.list = this.list.concat(list)
+              this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
+
+              if (list.length < this.pager.offset) {
+                this.isLast = true
+                this.$refs.infiniteLoading.$emit('$InfiniteLoading:complete')
+              }
+            }
+
+          }, response => {
+            // error callback
+          })
       }
     },
+
     components: {
       VueMarkdown,
       InfiniteLoading

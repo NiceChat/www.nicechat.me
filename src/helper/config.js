@@ -6,9 +6,9 @@ export default {
   appName: 'YangLei`s Notes',
   // 版本号
   ver: 'v1.0.1',
-  devHostName: 'http://dev.server.leileissr.com',
+  devHostName: 'https://server.leileissr.cn',
   // 生产环境访问域名
-  proHostName: 'http://server.leileissr.cn',
+  proHostName: 'https://server.leileissr.cn',
   // 前端模拟数据是否开启
   mock: false,
   // 系统统一处理errorCode
